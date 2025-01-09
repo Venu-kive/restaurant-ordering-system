@@ -1,15 +1,19 @@
 import mysql from "mysql2";
+import dotenv from "dotenv";
 
-// Create the connection to the Aiven database
+// Load environment variables from .env file
+dotenv.config();
+
+// Create the connection to the database using environment variables
 const db = mysql.createConnection({
-    host: "dbrestaurant-elaxmi04-1808.b.aivencloud.com",
-    port: 20645,
-    user: "avnadmin",
-    password: "AVNS_UfnKKPQtMuJjeMY4jKJ",
-    database: "defaultdb",
-    ssl: {
-        rejectUnauthorized: false, // Allow self-signed certificates
-    }
+    host: process.env.DB_HOST,        // Use environment variable for host
+    port: process.env.DB_PORT,        // Use environment variable for port
+    user: process.env.DB_USER,        // Use environment variable for user
+    password: process.env.DB_PASSWORD, // Use environment variable for password
+    database: process.env.DB_NAME,    // Use environment variable for database name
+    // ssl: {
+    //     rejectUnauthorized: false, // If SSL is required, uncomment and adjust
+    // }
 });
 
 db.connect(error => {
