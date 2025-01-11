@@ -25,8 +25,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//use cors
-app.use(cors());
+// use cors with specific origin
+app.use(cors({
+    origin: 'https://restaurant-ordering-system-app.onrender.com', // replace with your frontend domain
+    credentials: true
+}));
 
 // use router
 app.use(router);
@@ -49,8 +52,6 @@ app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, './restaurant_management/index.html'))
 });
 
-
-
 // PORT
 const PORT = process.env.PORT || 8001;
 app.listen(PORT, () => {
@@ -62,6 +63,3 @@ app.listen(PORT, () => {
 // https://www.bezkoder.com/serve-vue-app-express/
 // https://www.bezkoder.com/deploy-node-js-app-heroku-cleardb-mysql/
 // https://www.youtube.com/watch?v=W-b9KGwVECs
-// https://stackoverflow.com/questions/43362014/heroku-no-default-language-could-be-detected-for-this-app-error-thrown-for-no
-// https://stackoverflow.com/questions/16128395/what-is-procfile-and-web-and-worker
-// https://www.youtube.com/watch?v=lwOsI8LtVEQ
