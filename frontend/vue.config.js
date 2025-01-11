@@ -9,11 +9,11 @@ module.exports = {
   // Dev server proxy configuration
   devServer: {
     proxy: {
-      '/': {
-        target: 'http://localhost:8001', // Backend server
-        changeOrigin: true, // Ensures correct Host header
-        ws: true // Proxy websockets if needed
+      '/ws': {
+        target: 'https://restaurant-ordering-system-backend-b93k.onrender.com',
+        changeOrigin: true,
+        ws: true
       }
-    }
+    }    
   }
 };
