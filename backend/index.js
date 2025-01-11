@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // use cors with specific origin
 app.use(cors({
-    origin: 'https://restaurant-ordering-system-app.onrender.com', // replace with your frontend domain
+    origin: '*', // allow all origins for testing purposes
     credentials: true
 }));
 
